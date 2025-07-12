@@ -37,25 +37,16 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      {/* Move the components outside of the .card section */}
+      {/* Custom components */}
       <WelcomeMessage />
       <Header />
       <MainContent />
       <Footer />
 
-    <>
       <h1>React Props Demo</h1>
       <UserProfile name="SmartTife" age="21" bio="Loves reading and coding" />
-      <UserProfile/>
     </>
-    </>
-    
   )
 }
 
 export default App;
-
-
-    
-
-
