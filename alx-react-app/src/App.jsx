@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import WelcomeMessage from './components/WelcomeMessage';
+import WelcomeMessage from './components/WelcomeMessage'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank" rel="noreferrer">
+        <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
+        <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -25,7 +25,7 @@ function App() {
       <h1>Vite + React</h1>
 
       <div className="card">
-        <button onClick={() => setCount(c => c + 1)}>
+        <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
@@ -44,13 +44,9 @@ function App() {
       <Footer />
 
       <h1>React Props Demo</h1>
-      <UserProfile
-        name="SmartTife"
-        age={21}
-        bio="Loves reading and coding"
-      />
+       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
     </>
-  );
+  )
 }
 
 export default App;
