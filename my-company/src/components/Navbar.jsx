@@ -6,7 +6,9 @@ export default function Navbar() {
     <nav style={{
       padding: '10px 20px',
       backgroundColor: '#f2f2f2',
-      borderBottom: '1px solid #ccc'
+      borderBottom: '1px solid #ccc',
+      display: 'flex',
+      justifyContent: 'space-between'
     }}>
       <Link to="/"       style={{ marginRight: '15px' }}>Home</Link>
       <Link to="/about"  style={{ marginRight: '15px' }}>About</Link>
