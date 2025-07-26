@@ -4,6 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
+import RecipeDetails from './components/RecipeDetails'
+import EditRecipeForm from './components/EditRecipeForm'
+import DeleteRecipeButton from './components/DeleteRecipeButton'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,6 +32,9 @@ function App() {
 
         <AddRecipeForm/>
         <RecipeList/>
+        <RecipeDetails/>
+        <EditRecipeForm/>
+        <DeleteRecipeButton recipeId={1} />
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
