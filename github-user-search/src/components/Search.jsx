@@ -1,59 +1,90 @@
 // src/components/Search.jsx
 import React, { useState } from 'react';
-import { fetchUserData } from '../services/githubService.js';
+import { searchUsers } from '../services/githubService';
 
 const Search = () => {
   const [username, setUsername] = useState('');
-  const [user, setUser] = useState(null);
+  const [location, setLocation] = useState('');
+  const [minRepos, setMinRepos] = useState('');
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    if (!username.trim()) return;
-
     setLoading(true);
     setError('');
-    setUser(null);
+    setUsers([]);
 
     try {
-      const userData = await fetchUserData(username.trim());
-      setUser(userData);
+      const query = `${username ? `user:${username}` : ''} ${location ? `location:${location}` : ''} ${minRepos ? `repos:>=${minRepos}` : ''}`;
+      const results = await searchUsers(query.trim());
+      setUsers(results.items);
     } catch (err) {
-      setError('Looks like we cant find the user');
+      setError('Something went wrong while searching users.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '1rem' }}>
+    <div className="max-w-xl mx-auto p-4">
+      <form onSubmit={handleSearch} className="space-y-4 bg-white p-4 shadow rounded">
+        <h2 className="text-xl font-bold">Advanced GitHub User Search</h2>
+
         <input
           type="text"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="Search GitHub username"
-          style={{ padding: '0.5rem', width: '250px' }}
+          className="w-full p-2 border rounded"
         />
-        <button type="submit" style={{ marginLeft: '1rem', padding: '0.5rem' }}>
+
+        <input
+          type="text"
+          placeholder="Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
+
+        <input
+          type="number"
+          placeholder="Minimum Repositories"
+          value={minRepos}
+          onChange={(e) => setMinRepos(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
+
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700">
           Search
         </button>
       </form>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {loading && <p className="mt-4 text-blue-500">Loading...</p>}
 
-      {user && (
-        <div style={{ border: '1px solid #ddd', padding: '1rem', textAlign: 'left' }}>
-          <img src={user.avatar_url} alt={user.login} width={100} />
-          <h3>{user.name || user.login}</h3>
-          <p>{user.bio}</p>
-          <a href={user.html_url} target="_blank" rel="noreferrer">
-            View GitHub Profile
-          </a>
-        </div>
-      )}
+<h1 className="text-3xl font-bold text-green-600">
+  Tailwind CSS is working!
+</h1>
+
+      {loading && <p className="mt-4 text-blue-500">Loading...</p>}
+      {error && <p className="mt-4 text-red-500">{error}</p>}
+
+      <div className="mt-6 space-y-4">
+        {users.map((user) => (
+          <div key={user.id} className="p-4 border rounded shadow-sm bg-gray-50">
+            <div className="flex items-center space-x-4">
+              <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
+              <div>
+                <h3 className="text-lg font-semibold">{user.login}</h3>
+                <a href={user.html_url} className="text-blue-600" target="_blank" rel="noreferrer">
+                  View Profile
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

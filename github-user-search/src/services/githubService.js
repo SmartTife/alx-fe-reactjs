@@ -6,11 +6,13 @@ const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 const github = axios.create({
   baseURL: 'https://api.github.com/',
   headers: {
-    Authorization: `token ${GITHUB_TOKEN}`
+    Authorization: `token ${GITHUB_TOKEN}`,
   }
 });
 
-export const fetchUserData = async (username) => {
-  const response = await github.get(`/users/${username}`);
+// Advanced GitHub search
+export const searchUsers = async (query) => {
+  const response = await github.get(`/search/users?q=${encodeURIComponent(query)}`);
   return response.data;
 };
+
