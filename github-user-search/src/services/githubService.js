@@ -10,7 +10,7 @@ const github = axios.create({
   }
 });
 
-export const searchUsers = async (username, location, minRepos) => {
+export const fetchUserData = async (username, location, minRepos) => {
   let query = '';
   if (username) query += `${username} `;
   if (location) query += `location:${location} `;
