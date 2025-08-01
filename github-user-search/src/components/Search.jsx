@@ -17,7 +17,8 @@ const Search = () => {
     setUsers([]);
 
     try {
-      const results = await searchUsers(username.trim(), location.trim(), minRepos.trim());
+      const query = `${username ? `user:${username}` : ''} ${location ? `location:${location}` : ''} ${minRepos ? `repos:>=${minRepos}` : ''}`;
+      const results = await searchUsers(query.trim());
       setUsers(results.items);
     } catch (err) {
       setError('Something went wrong while searching users.');
@@ -61,12 +62,13 @@ const Search = () => {
       </form>
 
       {loading && <p className="mt-4 text-blue-500">Loading...</p>}
-      {error && <p className="mt-4 text-red-500">{error}</p>}
 
-      {/* ✅ Optional Tailwind test */}
-      <h1 className="text-3xl font-bold text-green-600 mt-6">
-        Tailwind CSS is working!
-      </h1>
+<h1 className="text-3xl font-bold text-green-600">
+  Tailwind CSS is working!
+</h1>
+
+      {loading && <p className="mt-4 text-blue-500">Loading...</p>}
+      {error && <p className="mt-4 text-red-500">{error}</p>}
 
       <div className="mt-6 space-y-4">
         {users.map((user) => (
