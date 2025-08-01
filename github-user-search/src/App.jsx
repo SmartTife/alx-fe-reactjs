@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import UserCard from './components/UserCard';
 import { fetchUser } from './services/github';
+import Search from './components/Search';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -25,6 +26,7 @@ const App = () => {
       <SearchBar onSearch={handleSearch} />
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <UserCard user={user} />
+      <Search />
     </div>
   );
 };
