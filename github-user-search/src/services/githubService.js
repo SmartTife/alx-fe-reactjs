@@ -1,4 +1,4 @@
-// src/services/github.js
+// src/services/githubService.js
 import axios from 'axios';
 
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
@@ -10,7 +10,7 @@ const github = axios.create({
   }
 });
 
-export const fetchUser = async (username) => {
+export const fetchUserData = async (username) => {
   const response = await github.get(`/users/${username}`);
   return response.data;
 };

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import SearchBar from './components/SearchBar';
 import UserCard from './components/UserCard';
-import { fetchUserData } from './services/github';
+import { fetchUserData } from './services/githubService.js';
 import Search from './components/Search';
 
 const App = () => {
