@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import recipesData from "../data.json"; // vite can import json directly
+import { Link } from 'react-router-dom';
+
 
 export default function HomePage() {
   const [recipes, setRecipes] = useState([]);
+  
 
   // simulate loading on mount
   useEffect(() => {
@@ -24,6 +27,7 @@ export default function HomePage() {
             Browse community favorites and discover your next meal.
           </p>
         </header>
+        
 
         {/* Responsive grid */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
