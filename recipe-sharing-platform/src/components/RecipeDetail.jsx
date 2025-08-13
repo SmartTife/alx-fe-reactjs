@@ -16,7 +16,7 @@ export default  function RecipeDetail() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto p-4">
+      <div className="max-w-4xl mx-auto p-4 shadow-md hover:shadow-lg transition-shadow duration-300">
          <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover rounded-lg mb-4" />
          <h1 className="text-3xl font-bold mb-2">{recipe.title}</h1>
          <h3 className="text-lg font-semibold mt-4">Ingredients</h3>
