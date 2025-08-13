@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import recipesData from "../data.json";
 
 export default  function RecipeDetail() {
-  const [recipes, setRecipes] = useState([]);
+  const { id } = useParams();
 
   // simulate loading on mount
   useEffect(() => {
