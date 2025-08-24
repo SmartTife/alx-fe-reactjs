@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4 text-center">User Registration</h1>
-      {/* Uncomment the form you want to use */}
-      {/* <RegistrationForm /> */}
+      
+      
       <FormikForm />
     </div>
   );
