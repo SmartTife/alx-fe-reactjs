@@ -1,10 +1,6 @@
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const isAuthenticated = true; // change to false to simulate redirect
-
-export default function ProtectedRoute({ children }) {
-  if (!isAuthenticated) {
-    return <Navigate to="/" replace />;
-  }
-  return children;
+export default function ProtectedRoute({ isAuthenticated, children }) {
+  return isAuthenticated ? children : <Navigate to="/login" />;
 }
