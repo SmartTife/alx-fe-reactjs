@@ -36,7 +36,7 @@ export default function RegistrationForm() {
         <label>Username</label>
         <input
           name="username"
-          value={formData.username}
+          value={username}
           onChange={handleChange}
           className="w-full border p-2"
         />
@@ -47,7 +47,7 @@ export default function RegistrationForm() {
         <label>Email</label>
         <input
           name="email"
-          value={formData.email}
+          value={email}
           onChange={handleChange}
           className="w-full border p-2"
         />
@@ -59,7 +59,7 @@ export default function RegistrationForm() {
         <input
           name="password"
           type="password"
-          value={formData.password}
+          value={password}
           onChange={handleChange}
           className="w-full border p-2"
         />
